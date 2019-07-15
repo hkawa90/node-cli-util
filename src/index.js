@@ -146,7 +146,7 @@ function progressListWithStatus(str, status) {
  * formatParser('[{progress_bar}[%30c]] {percentage}[%3d]% | ETA: {eta}s | {value}/{total}')
  * 
  */
-function formatParser(formatString, args, options) {
+function formater(formatString, args, options) {
     let defaultOptions = {
         width: 20,
         color: 'white',
@@ -240,5 +240,5 @@ function formatParser(formatString, args, options) {
 module.exports.progressListWithStatus = progressListWithStatus;
 module.exports.progressListOnTerm = progressListOnTerm;
 module.exports.progressRotaionBarOnTerm = progressRotaionBarOnTerm;
-module.exports.formatParser = formatParser;
+module.exports.formater = formater;
 module.exports.blockBarString = blockBarString;
