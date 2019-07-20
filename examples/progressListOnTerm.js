@@ -1,6 +1,6 @@
 var path = require('path');
 var EventEmitter = require('events').EventEmitter;
-const progressListOnTerm = require(path.join(__dirname, '../dist/')).progressListOnTerm;
+const progress = require(path.join(__dirname, '../dist/')).progress;
 
 
 var progressState = [{ title: 'Create .gitignore.', state: '-' },
@@ -25,21 +25,21 @@ async function sleep(time) {
         for (var i = 0; i < progressState.length; i++)
             if (progressState[i].title === title) {
                 progressState[i].state = 'ok';
-                progressListOnTerm(progressState);
+                progress.progressListOnTerm(progressState);
             }
     });
     reporter.on('ng', (title) => {
         for (var i = 0; i < progressState.length; i++)
             if (progressState[i].title === title) {
                 progressState[i].state = 'ng';
-                progressListOnTerm(progressState);
+                progress.progressListOnTerm(progressState);
             }
     });
     reporter.on('skip', (title) => {
         for (var i = 0; i < progressState.length; i++)
             if (progressState[i].title === title) {
                 progressState[i].state = 'skip';
-                progressListOnTerm(progressState);
+                progress.progressListOnTerm(progressState);
             }
     });
     reporter.emit('ok', 'Create .gitignore.');

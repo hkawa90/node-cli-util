@@ -5,14 +5,8 @@ const style = require('ansi-styles');
 const charBar = ['-', '\\', '|', '/'];
 var progress = 0;
 var counter = 0;
+var intervalObj = null;
 
-async function sleep(time) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve();
-        }, time);
-    });
-}
 
 function display_progress() {
     process.stdout.write('[' + progress + '%]' + charBar[counter % 4] + '\n');
@@ -21,8 +15,15 @@ function display_progress() {
 
 process.on("message", function (msg) {
     progress = parseInt(msg.progress, 10);
-    
+    display_progress();
+
     if (progress === 100) {
+        clearInterval(intervalObj);
         process.exit(0);
     }
 });
+
+intervalObj = setInterval(() => {
+    counter++;
+    display_progress();
+  }, 300);

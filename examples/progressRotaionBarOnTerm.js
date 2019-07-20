@@ -1,5 +1,5 @@
 var path = require('path');
-const progress = require(path.join(__dirname, '../dist/')).progressRotaionBarOnTerm;
+const progress = require(path.join(__dirname, '../dist/')).progress;
 
 async function sleep(time) {
     return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ async function sleep(time) {
 
 (async ()=>{
     for (var i = 0; i <= 100; i++) {
-        progress(i);
+        progress.progressRotaionBarOnTerm(i);
         await sleep(100);
     }
 })();
