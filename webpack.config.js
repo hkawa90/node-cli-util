@@ -14,15 +14,14 @@ module.exports = (env, argv) => {
     target: "node",
     entry: {
       "index" : "./src/index.js",
-      "child_rotation_bar" : "./src/child_rotation_bar.js"
+      "child_rotation_bar" : "./src/child_rotation_bar.js",
     },
     output: {
           //  出力ファイルのディレクトリ名
     path: path.resolve(__dirname, 'dist'),
     // 出力ファイル名
     filename: '[name].js',
-    libraryTarget: 'commonjs' // See Authoring Libraries(https://webpack.js.org/guides/author-libraries/)
-
+    libraryTarget: 'commonjs2' // See Authoring Libraries(https://webpack.js.org/guides/author-libraries/)
     },
     resolve: {
           modules: [
